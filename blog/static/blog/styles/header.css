@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #4b5a8c;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    top: 0;
+    position: sticky;
+    z-index: 100px;
+}    
+
+header h1 {
+    font-family: Aerial;
+    font-size: 16px;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;  
+}
+
+.nav-list li {
+    display: inline;
+    margin-right: 15px; 
+}
+
+.nav-list a {
+    text-decoration: none; 
+    color: #ffffff;
+    font-family: Aerial;
+    font-size: 16px;
+}

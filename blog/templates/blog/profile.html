@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../static/blog/styles/header.css">
+    <link rel="stylesheet" type="text/css" href="../../static/blog/styles/profile.css">
+    <title>PostSphere</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>PostSphere</h1>
+      <nav>
+	<ul class="nav-list">
+	  <li><a href="../blog/home.html">Home</a></li>
+	  <li><a href="../blog/new_post.html">New Post</a></li>
+	  <li><a href="../blog/profile.html">profile</a></li>
+	  <li><a href="../blog/login.html">Logout</a></li>
+	</ul>
+      </nav>
+    </header>
+
+    <div class="main-container">
+      <div class="profile-container">
+	<div class="profile-image-section">
+	  <img src="../../static/blog/images/image.png" alt="Profile Image" class="profile-image">
+	  <a href="#" class="edit-image">Edit Image</a>
+	</div>
+	
+	<div class="profile-info-section">
+	  <h2 class="user-name">User Name</h2>
+	  <p class="user-email">User Email</p>
+	</div>
+      </div>
+
+      <div class="profile-details">
+	<h2 class="profile-info">Profile Information</h2>
+	<form class="profile-form">
+	  <label for="user_name">Username*</label>
+	  <input type="text" id="user_name" name="user_name">
+	  <label for="email">Email*</label>
+	  <input type="text" id="email" name="email">
+	  <input type="submit" value="Update">
+	</form>
+      </div>
+    </div>
+	
+</html>

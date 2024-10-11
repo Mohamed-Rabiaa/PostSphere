@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles/home.css' %}">
+    <title>PostSphere</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>PostSphere</h1>
+      <nav>
+	<ul class="nav-list">
+	  <li><a href="{% url 'home' %}">Home</a></li>
+	  <li><a href="../blog/new_post.html">New Post</a></li>
+	  <li><a href="../blog/profile.html">profile</a></li>
+	  <li><a href="{% url 'login' %}">Logout</a></li>
+	</ul>
+      </nav>
+    </header>
+
+    <div class="home-container">
+      <div class="main-content">
+	{% for post in category_posts %}
+	  <article class="post">
+	    <div class="post-info">
+	      <img src="{% static 'blog/images/image.jpg' %}" alt="User Image" class="user-image">
+	      <h5 class="username">{{ post.author.name }}<span class="post-date">{{ post.created_at }}</span></h5>
+	    </div>
+	    <div class="post-content">
+	      <h3 class="post-title">{{ post.title }}</h3>
+	      <p>{{ post.content }}</p>
+	    </div>
+	  </article>
+	{% endfor %}
+      </div>
+
+      <div class="sidebar">
+	<h3 class="filters">Filters</h3>
+	<a href="{% url 'latest_posts' %}">Latest posts</a>
+	  <h4 class="categories">Categories:</h4>
+	  <ul>
+	    <li><a href="{% url 'category' 'tech' %}">Tech</a></li>
+	    <li><a href="{% url 'category' 'culture' %}">Culture</a></li>
+	    <li><a href="{% url 'category' 'science' %}">Science</a></li>
+	  </ul>
+      </div>
+    </div>
+  </body>  
+</html>

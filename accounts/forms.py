@@ -37,17 +37,3 @@ class LoginForm(forms.Form):
     email = forms.EmailField(label='Email', max_length=50)
     password = forms.CharField(label='Password', max_length=50,
                                widget=forms.PasswordInput)
-    def clean(self):
-        cleaned_data = super().clean()
-        email = cleaned_data.get('email')        
-        #Check if the email exists in the database
-        try:
-            user = User.objects.get(email=email)
-        except User.DoesNotExist:
-            raise ValidationError("Invalid Email.")
-
-        password = cleaned_data.get('password')
-        #Check if the given password belongs to the user with the given email
-        if not user.check_password(password):
-            raise ValidationError("Invalid Password")
-        return cleaned_data

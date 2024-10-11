@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login as auth_login
 from .forms import RegisterForm, LoginForm
 from django.contrib import messages
@@ -19,7 +18,7 @@ def register(request):
             auth_login(request, user)
             
             print('The user with {} logged in'.format(email))
-            return render(request, 'blog/home.html')
+            return redirect('home')
     else:
         form = RegisterForm()
     return render(request, 'accounts/register.html', {'form': form})
@@ -34,7 +33,7 @@ def login(request):
             if user is not None:
                 auth_login(request, user)
                 print('The user with {} logged in'.format(email))
-                return render(request, 'blog/home.html')
+                return redirect('home')
             else:
                 form.add_error(None, "Invalid login credentials")
     else:

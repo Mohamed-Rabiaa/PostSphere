@@ -14,7 +14,7 @@
       <nav>
 	<ul class="nav-list">
 	  <li><a href="{% url 'home' %}">Home</a></li>
-	  <li><a href="../blog/new_post.html">New Post</a></li>
+	  <li><a href="{% url 'new_post' %}">New Post</a></li>
 	  <li><a href="../blog/profile.html">profile</a></li>
 	  <li><a href="{% url 'login' %}">Logout</a></li>
 	</ul>
@@ -29,9 +29,9 @@
 	      <img src="{% static 'blog/images/image.jpg' %}" alt="User Image" class="user-image">
 	      <h5 class="username">{{ post.author.name }}<span class="post-date">{{ post.created_at }}</span></h5>
 	    </div>
-	    <div class="post-content">
+	    <div class="post-content-container">
 	      <h3 class="post-title">{{ post.title }}</h3>
-	      <p>{{ post.content }}</p>
+	      <p  class="post-content">{{ post.content }}</p>
 	    </div>
 	  </article>
 	{% endfor %}

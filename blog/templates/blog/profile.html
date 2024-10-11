@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../../static/blog/styles/header.css">
-    <link rel="stylesheet" type="text/css" href="../../static/blog/styles/profile.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles/profile.css' %}">
     <title>PostSphere</title>
   </head>
 
@@ -12,10 +13,10 @@
       <h1>PostSphere</h1>
       <nav>
 	<ul class="nav-list">
-	  <li><a href="../blog/home.html">Home</a></li>
-	  <li><a href="../blog/new_post.html">New Post</a></li>
+	  <li><a href="{% url 'home' %}">Home</a></li>
+	  <li><a href="{% url 'new_post' %}">New Post</a></li>
 	  <li><a href="../blog/profile.html">profile</a></li>
-	  <li><a href="../blog/login.html">Logout</a></li>
+	  <li><a href="{% url 'login' %}">Logout</a></li>
 	</ul>
       </nav>
     </header>
@@ -23,7 +24,7 @@
     <div class="main-container">
       <div class="profile-container">
 	<div class="profile-image-section">
-	  <img src="../../static/blog/images/image.png" alt="Profile Image" class="profile-image">
+	  <img src="{% static 'blog/images/image.png' %}" alt="Profile Image" class="profile-image">
 	  <a href="#" class="edit-image">Edit Image</a>
 	</div>
 	

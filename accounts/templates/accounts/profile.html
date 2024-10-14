@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/styles/profile.css' %}">
+    <title>PostSphere</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>PostSphere</h1>
+      <nav>
+	<ul class="nav-list">
+	  <li><a href="{% url 'home' %}">Home</a></li>
+	  <li><a href="{% url 'new_post' %}">New Post</a></li>
+	  <li><a href="{% url 'profile' %}">profile</a></li>
+	  <li><a href="{% url 'login' %}">Logout</a></li>
+	</ul>
+      </nav>
+    </header>
+
+    <div class="main-container">
+      <div class="profile-container">
+	<div class="profile-image-section">
+	  <img src="{% static 'blog/images/image.jpg' %}" alt="Profile Image" class="profile-image">
+	  <a href="#" class="edit-image">Edit Image</a>
+	</div>
+	
+	<div class="profile-info-section">
+	  <h2 class="user-name">{{ user.name }}</h2>
+	  <p class="user-email">{{ user.email }}</p>
+	</div>
+      </div>
+
+      <div class="profile-details">
+	<h2 class="profile-info">Profile Information</h2>
+	<form class="profile-form" action="{% url 'profile' %}" method="POST">
+	  {% csrf_token %}
+	  {{ form }}
+	  <input type="submit" value="Update">
+	</form>
+      </div>
+    </div>
+	
+</html>

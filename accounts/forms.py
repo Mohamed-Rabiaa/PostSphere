@@ -54,3 +54,8 @@ class LoginForm(forms.Form):
             raise ValidationError("Invalid Password.")
 
         return cleaned_data
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['name', 'email']

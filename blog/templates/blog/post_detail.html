@@ -25,8 +25,12 @@
       <div class="main-content">
 	<article class="post">
 	  <div class="post-info">
-	    <img src="{% static 'blog/images/image.jpg' %}" alt="User Image" class="user-image">
-	    <h5 class="username">{{ post.author.name }}<span class="post-date">{{ post.created_at }}</span></h5>
+	    {% if post.author.image %}
+	      <img src="{{ post.author.image.url }}" alt="User Image" class="user-image">
+	    {% else %}
+	      <img src="{{ MEDIA_URL }}accounts/profile_images/default_profile_image.png" alt="Profile Image" class="user-image">
+            {% endif %}
+	      <h5 class="username">{{ post.author.name }}<span class="post-date">{{ post.created_at }}</span></h5>
 	  </div>
 	  <div class="post-content-container">
 	    <h3 class="post-title">{{ post.title }}</h3>

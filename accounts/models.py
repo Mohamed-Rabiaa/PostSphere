@@ -6,7 +6,7 @@ from .managers import UserManager
 class User(AbstractBaseUser):
     name = models.CharField(max_length=50, unique=True)
     email = models.EmailField(max_length=50, unique=True)
-    image_url = models.CharField(max_length=250, blank=True)
+    image = models.ImageField(upload_to='accounts/profile_images/', blank=True, null=True)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)

@@ -24,8 +24,11 @@
     <div class="main-container">
       <div class="profile-container">
 	<div class="profile-image-section">
-	  <img src="{% static 'blog/images/image.jpg' %}" alt="Profile Image" class="profile-image">
-	  <a href="#" class="edit-image">Edit Image</a>
+	  {% if user.image %}
+	    <img src="{{ user.image.url }}" alt="Profile Image" class="profile-image">
+	  {% else %}
+	    <img src="{{ MEDIA_URL }}accounts/profile_images/default_profile_image.png" alt="Profile Image" class="profile-image">
+	  {% endif %}
 	</div>
 	
 	<div class="profile-info-section">
@@ -36,9 +39,22 @@
 
       <div class="profile-details">
 	<h2 class="profile-info">Profile Information</h2>
-	<form class="profile-form" action="{% url 'profile' %}" method="POST">
+	<form class="profile-form" enctype="multipart/form-data" action="{% url 'profile' %}" method="POST">
 	  {% csrf_token %}
-	  {{ form }}
+	  <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="{{ form.name.value }}" required>
+	  </div>
+	  
+	  <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="{{ form.email.value }}" required>
+	  </div>
+	   <div class="form-group">
+	    <label for="image">Image:</label>
+	    <input type="file" name="image" id="image">
+	  </div>
+	  
 	  <input type="submit" value="Update">
 	</form>
       </div>

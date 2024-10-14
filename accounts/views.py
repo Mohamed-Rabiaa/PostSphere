@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.conf import settings
 from .forms import RegisterForm, LoginForm, ProfileForm
 from .models import User
 
@@ -46,12 +47,13 @@ def login_view(request):
 def profile_view(request):
     user = request.user
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=user)
+        form = ProfileForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
             return redirect('profile')
     else:
         form = ProfileForm(instance=user)
     return render(request, 'accounts/profile.html', {
-        'form': form, 'user': user
+        'form': form,
+        'user': user,
     })

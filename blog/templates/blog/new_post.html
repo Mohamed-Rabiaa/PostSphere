@@ -15,14 +15,14 @@
 	<ul class="nav-list">
 	  <li><a href="{% url 'home' %}">Home</a></li>
 	  <li><a href="{% url 'new_post' %}">New Post</a></li>
-	  <li><a href="../blog/profile.html">profile</a></li>
+	  <li><a href="{% url 'profile' %}">profile</a></li>
 	  <li><a href="{% url 'login' %}">Logout</a></li>
 	</ul>
       </nav>
     </header>
     
     <div class="new-post">
-      <h2>New Post</h2>
+      <h2>{{ page_title }}</h2>
       <form method="post">
 	{% csrf_token %}
 	<div class="form-group">
@@ -39,7 +39,7 @@
           <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
           {{ form.content }}
 	</div>
-	<input type="submit" value='Post'>
+	<input type="submit" value={{ button_text }}>
       </form>
     </div>
   </body>

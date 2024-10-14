@@ -6,7 +6,6 @@ body {
   display: flex;
   margin-top: 20px;
   padding: 0;
-  display: flex;
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
@@ -42,20 +41,44 @@ body {
 .username {
   margin-right: 10px;
   margin-left: 10px;
+  padding-bottom: 5px;
   border-bottom: 1px solid #d3d3d3;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .post-date {
   font-size: 9px;
 }
 
-.post-content {
+.post-content-container {
   display: flex;
   flex-direction: column;
   padding: 0 50px;
 }
 
+.post-content {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    max-width: 500px; 
+    word-wrap: break-word;
+}
+
+.post-title a {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+  text-decoration: none;
+}
+.post-title a:hover {
+  color: #959595;
+}
 .filters {
   border-bottom: 1px solid #d3d3d3;
 }
@@ -67,11 +90,6 @@ a {
 
 .categories {
   font-size: 14px;
-}
-
-.change-posts {
-  display: flex;
-  justify-content: space-between;
 }
 
 

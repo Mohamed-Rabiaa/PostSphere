@@ -12,10 +12,13 @@ class Category(models.Model):
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100, unique=True)
+    title = models.CharField(max_length=200, unique=True)
     content = models.TextField()
     slug = models.SlugField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -26,5 +29,8 @@ class Post(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    def __str(self):
+        return self.title
     
 

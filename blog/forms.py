@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Category
 
 class NewPostForm(forms.ModelForm):
     class Meta:
@@ -12,3 +12,9 @@ class NewPostForm(forms.ModelForm):
         widgets = {
             'content': forms.Textarea(attrs={'rows': 5, 'cols': 40}),
         }
+
+    category = forms.ModelChoiceField(
+        queryset=Category.objects.order_by('name'),
+        empty_label="Select a Category",  # Label for the empty/default choice
+    )
+ 

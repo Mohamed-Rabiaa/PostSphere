@@ -12,12 +12,12 @@ def register(request):
             name = form.cleaned_data.get('name')
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
-            #Creating the new user
+            # Creating the new user
             user = User.objects.create_user(name, email, password)
-            #Logging in the user
-            auth_login(request, user)
-            
-            print('The user with {} logged in'.format(email))
+            print(user.password)
+            # Logging in the user
+            auth_login(request, user) 
+            print('User logged in:', request.user.is_authenticated)
             return redirect('home')
     else:
         form = RegisterForm()
@@ -29,7 +29,8 @@ def login(request):
         if form.is_valid():
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
-            user = authenticate(request, email=email, password=password)
+            user = User.objects.get(email=email)
+            user = authenticate(request, username=email, password=password)
             if user is not None:
                 auth_login(request, user)
                 print('The user with {} logged in'.format(email))

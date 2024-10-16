@@ -16,7 +16,6 @@ def register_view(request):
             password = form.cleaned_data.get('password')
             # Creating the new user
             user = User.objects.create_user(name, email, password)
-            print(user.password)
             # Logging in the user
             auth_login(request, user) 
             print('User logged in:', request.user.is_authenticated)

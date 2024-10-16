@@ -15,7 +15,6 @@ header {
 }    
 
 header h1 {
-    font-family: Aerial;
     font-size: 16px;
 }
 
@@ -35,4 +34,11 @@ header h1 {
     color: #ffffff;
     font-family: Aerial;
     font-size: 16px;
+}
+
+.website-name {
+    font-size: 16px;
+    font-family: Aerial;
+    color: #ffffff;
+    text-decoration: none;
 }

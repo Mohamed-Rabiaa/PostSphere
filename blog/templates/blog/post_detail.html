@@ -10,13 +10,14 @@
 
   <body>
     <header>
-      <h1>PostSphere</h1>
+      <h1>
+	<a class="website-name" href="{% url 'home' %}">PostSphere</a>
+      </h1>
       <nav>
 	<ul class="nav-list">
-	  <li><a href="{% url 'home' %}">Home</a></li>
-	  <li><a href="{% url 'new_post' %}">New Post</a></li>
-	  <li><a href="{% url 'profile' %}">profile</a></li>
-	  <li><a id="logout-link" href="{% url 'logout' %}">Logout</a></li>
+	  {% for nav_obj in nav_objects %}
+	    <li><a href="{% url nav_obj.nav_view_name %}">{{ nav_obj.nav_link_text }}</a></li>
+	  {% endfor %}
 	</ul>
       </nav>
     </header>

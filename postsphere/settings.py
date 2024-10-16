@@ -71,6 +71,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'postsphere.context_processors.media_url',
+                'postsphere.context_processors.get_categories',
+                'postsphere.context_processors.get_nav_objects',
             ],
         },
     },

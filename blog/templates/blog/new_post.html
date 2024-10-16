@@ -10,13 +10,19 @@
 
   <body>
     <header>
-      <h1>PostSphere</h1>
+      <h1>
+	<a class="website-name" href="{% url 'home' %}">PostSphere</a>
+      </h1>
       <nav>
 	<ul class="nav-list">
-	  <li><a href="{% url 'home' %}">Home</a></li>
-	  <li><a href="{% url 'new_post' %}">New Post</a></li>
-	  <li><a href="{% url 'profile' %}">profile</a></li>
-	  <li><a id="logout-link" href="{% url 'logout' %}">Logout</a></li>
+	  {% for nav_obj in nav_objects %}
+	  <li>
+	    <a
+	      {% if nav_obj.nav_view_name == 'logout' %}
+	       id="logout-link"
+	      {% endif %}
+	       href="{% url nav_obj.nav_view_name %}">{{ nav_obj.nav_link_text }}</a></li>
+	  {% endfor %}
 	</ul>
       </nav>
     </header>
@@ -40,6 +46,13 @@
           {{ form.content }}
 	</div>
 	<input type="submit" value={{ button_text }}>
+	 {% if form.title.errors %}
+            <div class="error">
+                {% for error in form.title.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
       </form>
     </div>
     <script src="{% static 'accounts/scripts/logout_confirm_dialog.js' %}"></script>

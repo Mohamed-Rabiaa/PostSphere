@@ -18,6 +18,7 @@ class LatestPostsView(generic.ListView):
     context_object_name = 'recent_posts'
 
     def get_queryset(self):
+        # Return the most 10 recent posts
         return Post.objects.order_by('-created_at')[:10]
 
 class CategoryPostsView(generic.ListView):
@@ -46,7 +47,11 @@ def new_post_view(request):
             return redirect('home')
     else:
         form = NewPostForm()
-    return render(request, 'blog/new_post.html', {'form': form, 'page_title': 'New Post', 'button_text': 'Post'})
+    return render(request, 'blog/new_post.html', {
+        'form': form,
+        'page_title': 'New Post',
+        'button_text': 'Post'
+    })
 
 @login_required
 def update_post_view(request, slug):
@@ -58,7 +63,11 @@ def update_post_view(request, slug):
             return redirect('post_detail', slug=post.slug)
     else:
         form = NewPostForm(instance=post)
-    return render(request, 'blog/new_post.html', {'form': form, 'page_title': 'Update Post', 'button_text': 'Update'})
+    return render(request, 'blog/new_post.html', {
+        'form': form,
+        'page_title': 'Update Post',
+        'button_text': 'Update'
+    })
 
 @login_required
 def delete_post_view(request, slug):

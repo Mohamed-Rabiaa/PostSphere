@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'postsphere.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('USERNAME'),
-        'PASSWORD': os.getenv('PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'NAME': os.getenv('PGDATABASE'),
+        'USER': os.getenv('PGUSER'),
+        'PASSWORD': os.getenv('PGPASSWORD'),
+        'HOST': os.getenv('PGHOST'),
+        'PORT': os.getenv('PGPORT'),
     }
 }
 

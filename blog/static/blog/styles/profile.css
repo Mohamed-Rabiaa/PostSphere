@@ -85,16 +85,10 @@ input[type=submit]:hover {
 }
 
 input[type=file] {
-    padding: 5px;
+      padding: 5px;
     border-radius: 5px;
     background-color: #f3f3f3;
     border: 1px solid #ccc;
     cursor: pointer;
     width: auto;
-     flex-grow: 1;  
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #D3D3D3;
-    border-radius: 5px;
-    width: 95%;
 }

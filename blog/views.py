@@ -59,3 +59,9 @@ def update_post_view(request, slug):
     else:
         form = NewPostForm(instance=post)
     return render(request, 'blog/new_post.html', {'form': form, 'page_title': 'Update Post', 'button_text': 'Update'})
+
+@login_required
+def delete_post_view(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    post.delete()
+    return redirect('home')

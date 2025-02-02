@@ -31,7 +31,7 @@ def login_view(request):
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
             user = User.objects.get(email=email)
-            user = authenticate(request, username=email, password=password)
+            user = authenticate(request, email=email, password=password)
             if user is not None:
                 auth_login(request, user)
                 print('The user with {} logged in'.format(email))
@@ -61,4 +61,4 @@ def profile_view(request):
 def logout_view(request):
     logout(request)
     print('User logged out')
-    return redirect('logout')
+    return redirect('login')
